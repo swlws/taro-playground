@@ -1,7 +1,7 @@
 import { View, Text, Input, Button } from "@tarojs/components";
 import { VirtualList } from "@tarojs/components-advanced";
 import Taro, { useLoad } from "@tarojs/taro";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import Row from "./components/row";
 import "./index.scss";
 
@@ -54,34 +54,42 @@ export default function DemoVList() {
     });
   }, []);
 
-  const loadMore = () => {
+  const loadMore = useCallback(() => {
     if (!hasMore) return;
     setItems((prev) => [...prev, ...genMock(pageRef.current, PAGE_SIZE)]);
     pageRef.current += 1;
     if (pageRef.current >= MAX_PAGES) {
       setHasMore(false);
     }
-  };
+  }, [hasMore]);
 
-  const onScroll = ({ scrollDirection, scrollOffset }) => {
+  const onScroll = useCallback(({ scrollDirection, scrollOffset }) => {
     if (
       !loadingRef.current &&
       !query &&
       scrollDirection === "forward" &&
-      scrollOffset >
-      (items.length - Math.floor(listHeight / ITEM_HEIGHT)) * ITEM_HEIGHT +
-      100
+      scrollOffset > (items.length - Math.floor(listHeight / ITEM_HEIGHT)) * ITEM_HEIGHT + 100
     ) {
       loadingRef.current = true;
       loadMore();
       loadingRef.current = false;
     }
-  };
+  }, [items.length, listHeight, query, loadMore]);
 
   const displayItems = useMemo(() => {
     if (!query) return items;
     return items.filter((it) => it.title.includes(query));
   }, [items, query]);
+
+  const onSearch = useCallback(() => {
+    if (listRef.current && typeof listRef.current.scrollTo === "function") {
+      listRef.current.scrollTo(0);
+    }
+  }, []);
+
+  const onSearchInput = useCallback((e) => {
+    setQuery(e.detail.value);
+  }, []);
 
   return (
     <View className="vlist">
@@ -90,18 +98,11 @@ export default function DemoVList() {
           className="vlist__search-input"
           value={query}
           placeholder="输入关键字"
-          onInput={(e) => setQuery(e.detail.value)}
+          onInput={onSearchInput}
         />
         <Button
           className="vlist__search-btn"
-          onClick={() => {
-            if (
-              listRef.current &&
-              typeof listRef.current.scrollTo === "function"
-            ) {
-              listRef.current.scrollTo(0);
-            }
-          }}
+          onClick={onSearch}
         >
           检索
         </Button>
