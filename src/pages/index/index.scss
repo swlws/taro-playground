@@ -4,7 +4,7 @@
   min-height: 100vh;
 
   &__title {
-    font-size: 20px;
+    font-size: var(--font-size-h3);
     font-weight: 600;
     margin-bottom: 16px;
   }
@@ -28,6 +28,6 @@
   }
 
   &__item-title {
-    font-size: 16px;
+    font-size: var(--font-size-h4);
   }
 }
