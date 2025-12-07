@@ -1,0 +1,33 @@
+.page-home {
+  padding: 24px;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+
+  .title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .menu-item {
+    background: #fff;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    color: #333;
+  }
+
+  .menu-item:active {
+    transform: scale(0.98);
+  }
+
+  .menu-title {
+    font-size: 16px;
+  }
+}

@@ -1,11 +1,14 @@
 export default defineAppConfig({
   pages: [
-    'pages/index/index'
+    "pages/index/index",
+    "pages/demo-video/index",
+    "pages/demo-map/index",
   ],
+
   window: {
-    backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#fff',
-    navigationBarTitleText: 'WeChat',
-    navigationBarTextStyle: 'black'
-  }
-})
+    backgroundTextStyle: "light",
+    navigationBarBackgroundColor: "#fff",
+    navigationBarTitleText: "WeChat",
+    navigationBarTextStyle: "black",
+  },
+});
