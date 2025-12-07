@@ -10,6 +10,7 @@ export default function Index() {
   const menus = [
     { title: "视频覆盖示例", url: "/pages/demo-video/index" },
     { title: "地图与用户信息", url: "/pages/demo-map/index" },
+    { title: "列表", url: "/pages/demo-v-list/index" },
   ];
 
   return (
