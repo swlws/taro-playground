@@ -1,21 +1,21 @@
-.page-home {
+.home {
   padding: 24px;
   background-color: #f5f7fa;
   min-height: 100vh;
 
-  .title {
+  &__title {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 16px;
   }
 
-  .menu {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  &__list {
+    display: flex;
+    flex-direction: column;
     gap: 12px;
   }
 
-  .menu-item {
+  &__item {
     background: #fff;
     border-radius: 10px;
     padding: 16px;
@@ -23,11 +23,11 @@
     color: #333;
   }
 
-  .menu-item:active {
+  &__item:active {
     transform: scale(0.98);
   }
 
-  .menu-title {
+  &__item-title {
     font-size: 16px;
   }
 }

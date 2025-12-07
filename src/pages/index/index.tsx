@@ -13,12 +13,12 @@ export default function Index() {
   ];
 
   return (
-    <View className="page-home">
-      <Text className="title">示例导航</Text>
-      <View className="menu">
+    <View className="home">
+      <Text className="home__title">示例导航</Text>
+      <View className="home__list">
         {menus.map((m) => (
-          <Navigator key={m.url} url={m.url} className="menu-item">
-            <Text className="menu-title">{m.title}</Text>
+          <Navigator key={m.url} url={m.url} className="home__item">
+            <Text className="home__item-title">{m.title}</Text>
           </Navigator>
         ))}
       </View>
