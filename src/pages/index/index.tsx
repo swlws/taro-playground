@@ -1,5 +1,5 @@
 import { View, Text, Navigator } from "@tarojs/components";
-import { useLoad } from "@tarojs/taro";
+import Taro, { useDidShow, useLoad } from "@tarojs/taro";
 import "./index.scss";
 
 export default function Index() {
@@ -12,6 +12,12 @@ export default function Index() {
     { title: "地图与用户信息", url: "/pages/demo-map/index" },
     { title: "列表", url: "/pages/demo-v-list/index" },
   ];
+
+
+  useDidShow(async () => {
+    const systemInfo = await Taro.getSystemInfo();
+    console.log(systemInfo.safeArea)
+  })
 
   return (
     <View className="home">

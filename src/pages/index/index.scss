@@ -1,7 +1,11 @@
 .home {
-  padding: 24px;
   background-color: #f5f7fa;
-  min-height: 100vh;
+  max-height: 100vh;
+
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 
   &__title {
     font-size: var(--font-size-h3);
